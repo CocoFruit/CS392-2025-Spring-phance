@@ -1,0 +1,39 @@
+########################################################################
+#
+# A simple Makefile for compiling Java code for CS392X1
+#
+########################################################################
+JAVA=java
+JAVAC=javac
+########################################################################
+MYCPS=.:./../../../assets/algs4/algs4.jar
+########################################################################
+all:: \
+    Assign02_01 \
+    Assign02_02 \
+    Assign02_03 \
+    Assign02_04 \
+    Assign02_05
+########################################################################
+Assign02_01: Assign02_01.class; $(JAVA) -cp $(MYCPS) Assign02_01
+Assign02_01.class: Assign02_01.java; $(JAVAC) -cp $(MYCPS) Assign02_01.java
+
+Assign02_02: Assign02_02.class; $(JAVA) -cp $(MYCPS) Assign02_02
+Assign02_02.class: Assign02_02.java; $(JAVAC) -cp $(MYCPS) Assign02_02.java
+
+Assign02_03: Assign02_03.class; $(JAVA) -cp $(MYCPS) Assign02_03
+Assign02_03.class: Assign02_03.java; $(JAVAC) -cp $(MYCPS) Assign02_03.java
+
+Assign02_04: Assign02_04.class; $(JAVA) -cp $(MYCPS) Assign02_04
+Assign02_04.class: Assign02_04.java; $(JAVAC) -cp $(MYCPS) Assign02_04.java
+
+Assign02_05: Assign02_05.class; $(JAVA) -cp $(MYCPS) Assign02_05
+Assign02_05.class: Assign02_05.java; $(JAVAC) -cp $(MYCPS) Assign02_05.java
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: clean
+cleanall:: ; rm -f *.class
+########################################################################
+########################################################################
+########################################################################
