@@ -24,7 +24,7 @@ public class Quicksort {
     }
 
     private static < T > int getPivot(int l, int r) {
-        return l; // HX: FIXME!!!
+        return (int) (Math.random() * (r - l) + l);
     }
 
     private static < T extends Comparable < T >> int split(T A[], int l, int r) {
