@@ -39,37 +39,16 @@ public class PriorityQueue<T extends Comparable<T>> implements Queue<T> {
 
     public static void main(String[] args){
             // Sample input array of Integers
-    Integer[] data = {5, 2, 9, 1, 3};
+    Integer[] data = {10, 7, 20, 4, 3};
 
     // Create priority queue from array
     PriorityQueue<Integer> pq = new PriorityQueue<>(data);
+    
 
     System.out.println("After building from array:");
     while (!pq.isEmpty()) {
         System.out.print(pq.remove() + " ");
     }
-    System.out.println(); // Expected: elements in descending order of default priority (all same, so by value)
-
-    // Insert elements with priorities
-    pq.insertWithPriority(10, 2);
-    pq.insertWithPriority(20, 5);
-    pq.insertWithPriority(15, 3);
-    pq.insertWithPriority(7, 5);  // same priority as 20, but smaller value
-
-    System.out.println("After inserting with priorities:");
-    while (!pq.isEmpty()) {
-        System.out.print(pq.remove() + " ");
-    }
-    // Expected: 20 7 15 10 (since 20 and 7 have highest priority, but 20 > 7 in value)
-
-    // Test peek and isFull
-    PriorityQueue<Integer> smallPQ = new PriorityQueue<>(new Integer[3]);
-    smallPQ.insertWithPriority(1, 1);
-    smallPQ.insertWithPriority(2, 2);
-    smallPQ.insertWithPriority(3, 3);
-
-    System.out.println("\nPeek top of smallPQ: " + smallPQ.peek()); // Expected: 3
-
-    System.out.println("Is full? " + smallPQ.isFull()); // Expected: true
+    System.out.println(); 
     }
 }
