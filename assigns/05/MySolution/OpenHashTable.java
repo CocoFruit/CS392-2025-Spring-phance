@@ -8,15 +8,15 @@
  * A class that implements a hash table that employs open addressing
  * using either linear probing, quadratic probing, or double hashing.
  */
-public class OpenHashTable implements HashTable {
+public class OpenHashTable<K,V> implements HashTable<K,V> {
     /* Private inner class for an entry in the hash table */
     private class Entry {
-        private Object key;
-        private LLQueue<Object> values;    // all of the values with this key
+        private K key;
+        private LLQueue<V> values;    // all of the values with this key
         
-        private Entry(Object key, Object value) {
+        private Entry(K key, V value) {
             this.key = key;
-            values = new LLQueue<Object>();
+            values = new LLQueue<V>();
             values.insert(value);
         }
     }
@@ -38,7 +38,7 @@ public class OpenHashTable implements HashTable {
             throw new IllegalArgumentException("invalid probeType: " + probeType);
         }
         
-        table = new Entry[size];
+        table = (Entry[]) new Object[size];
         this.probeType = probeType;
     }
     
@@ -51,7 +51,7 @@ public class OpenHashTable implements HashTable {
     }
     
     /* first hash function */
-    public int h1(Object key) {
+    public int h1(K key) {
         int h1 = key.hashCode() % table.length;
         if (h1 < 0) {
             h1 += table.length;
@@ -60,7 +60,7 @@ public class OpenHashTable implements HashTable {
     }
     
     /* second hash function */
-    public int h2(Object key) {
+    public int h2(K key) {
         int h2 = key.hashCode() % 5;
         if (h2 < 0) {
             h2 += 11;
@@ -95,7 +95,7 @@ public class OpenHashTable implements HashTable {
      * in the table.
      * If overflow occurs, it returns -1.
      */
-    private int probe(Object key) {
+    private int probe(K key) {
         int i = h1(key);    // first hash function
         int h2 = h2(key);   // second hash function
         int numChecked = 1;
@@ -117,7 +117,7 @@ public class OpenHashTable implements HashTable {
      * insert - insert the specified (key, value) pair in the hash table.
      * Returns true if the pair can be added and false if there is overflow.
      */
-    public boolean insert(Object key, Object value) {
+    public boolean insert(K key, V value) {
         if (key == null) {
             throw new IllegalArgumentException("key must be non-null");
         }
@@ -159,7 +159,7 @@ public class OpenHashTable implements HashTable {
      * associated collection of values, or null if the key 
      * is not in the table
      */
-    public Queue<Object> search(Object key) {
+    public Queue<V> search(K key) {
         if (key == null) {
             throw new IllegalArgumentException("key must be non-null");
         }
@@ -178,7 +178,7 @@ public class OpenHashTable implements HashTable {
      * and return the associated collection of values, or null if the key 
      * is not in the table
      */
-    public Queue<Object> remove(Object key) {
+    public Queue<V> remove(K key) {
         if (key == null) {
             throw new IllegalArgumentException("key must be non-null");
         }
@@ -188,7 +188,7 @@ public class OpenHashTable implements HashTable {
             return null;
         }
         
-        LLQueue<Object> removedVals = table[i].values;
+        LLQueue<V> removedVals = table[i].values;
         table[i].key = null;
         table[i].values = null;
         return removedVals;

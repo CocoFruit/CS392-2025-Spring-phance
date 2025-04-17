@@ -174,6 +174,17 @@ public class Heap<T extends Comparable<T>> {
         }    
     }
 
+    public T peek() {
+        if (numItems == 0) {
+            throw new NoSuchElementException("Heap is empty");
+        }
+        return contents[0];
+    }
+
+    public boolean isFull() {
+        return numItems >= contents.length;
+    }
+
     private boolean less(T a, T b){
         return a.compareTo(b) < 0;
     }
