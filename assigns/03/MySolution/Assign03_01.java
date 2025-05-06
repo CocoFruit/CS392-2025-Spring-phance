@@ -24,7 +24,7 @@ public class Assign03_01 {
     }
 
     public static void main(String[] argv) {
-        // System.out.println(check(1000000));
-        System.out.println(mystery(374997));  // Start recursion with depth 0
+        System.out.println(check(1000000));
+        // System.out.println(mystery(374997));  // Start recursion with depth 0
     }
 }

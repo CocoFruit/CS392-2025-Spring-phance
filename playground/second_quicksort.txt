@@ -1,0 +1,4 @@
+2 pivots start on left
+trying to keep all numbers between pointers greater than or equal pivot
+and all numbers to left of left pointer is stricty less than pivot
+

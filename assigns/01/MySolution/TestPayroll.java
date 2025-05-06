@@ -77,5 +77,12 @@ public class TestPayroll {
         p2.copy_payroll(p1);
         System.out.println("Payroll 2 after copying payroll 1:");
         p2.print();
+
+        //test thrwoing EmployeeIndexException
+        try {
+            p1.remove_employee(10);
+        } catch (EmployeeIndexException e) {
+            System.out.println("Employee index exception caught");
+        }
     }
 }

@@ -1,8 +1,10 @@
+
 //
 import java.io.*;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.function.Predicate;
+
 //
 // typedef LStream =
 // Supplier<LStrcon<T>>
@@ -10,18 +12,22 @@ import java.util.function.Predicate;
 class LinStrcon<T> {
     public final T head;
     public final LinStream<T> tail;
+
     public LinStrcon() {
-	head = null;
-	tail = null;
+        head = null;
+        tail = null;
     }
-    public LinStrcon
-	(T hd, LinStream<T> tl) {
-	this.head = hd; this.tail = tl;
+
+    public LinStrcon(T hd, LinStream<T> tl) {
+        this.head = hd;
+        this.tail = tl;
     }
+
     public boolean nilq() {
-	return (head == null);
+        return (head == null);
     }
+
     public boolean consq() {
-	return (head != null);
+        return (head != null);
     }
 }

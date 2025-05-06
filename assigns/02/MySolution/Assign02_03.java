@@ -2,7 +2,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import edu.princeton.cs.algs4.*;
 
-
 public class Assign02_03<T> implements Deque<T> {
     private T[] deque;
     private int n;      // num of elemnts in deque
