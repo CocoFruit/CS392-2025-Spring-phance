@@ -12,10 +12,24 @@ import java.util.function.UnaryOperator;
 // Supplier<LinStrcon<T>>
 //
 class LinStream<T> {
+<<<<<<< HEAD
 	private final Supplier<LinStrcon<T>> value;
 
 	public LinStream(Supplier<LinStrcon<T>> fxs) {
 		this.value = fxs;
+=======
+    private final Supplier<LinStrcon<T>> value;
+    public LinStream(Supplier<LinStrcon<T>> fxs) {
+	this.value = fxs;
+    }
+    public LinStrcon<T> eval() {
+	return this.value.get();
+    }
+    public void forEach(Consumer<T> work) {
+	LinStrcon<T> cxs = value.get();
+	while (cxs.consq()) {
+	    work.accept(cxs.head); cxs = cxs.tail.eval();
+>>>>>>> upstream/main
 	}
 
 	public LinStrcon<T> eval() {
