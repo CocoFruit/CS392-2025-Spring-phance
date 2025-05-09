@@ -4,31 +4,42 @@ import java.util.NoSuchElementException;
 
 public
 class Assign03_04<T> extends Assign02_04<T> implements Iterable2<T> {
-    public Iterator<T> iterator(){ // forward
+    @Override
+    public Iterator<T> iterator() { // forward
         return new Iterator<T>() {
-            private int index = 0;
+            private Node<T> current = first;
+    
             public boolean hasNext() {
-                return index < size();
+                return current != null;
             }
+    
             public T next() {
-                if(!hasNext()) throw new NoSuchElementException();
-                return takeout_at_beg();
-            }
-        };
-    } 
-    public Iterator<T> riterator() // backward
-    {
-        return new Iterator<T>() {
-            private int index = 0;
-            public boolean hasNext() {
-                return index < size();
-            }
-            public T next() {
-                if(!hasNext()) throw new NoSuchElementException();
-                return takeout_at_end();
+                if (!hasNext()) throw new NoSuchElementException();
+                T value = current.value;
+                current = current.next;
+                return value;
             }
         };
     }
+    
+    @Override
+    public Iterator<T> riterator() { // backward
+        return new Iterator<T>() {
+            private Node<T> current = last;
+    
+            public boolean hasNext() {
+                return current != null;
+            }
+    
+            public T next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                T value = current.value;
+                current = current.prev;
+                return value;
+            }
+        };
+    }
+    
     public void forEach(Consumer<? super T> action) // forward
     {
         Iterator<T> it = iterator();

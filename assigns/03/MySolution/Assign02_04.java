@@ -6,14 +6,14 @@ public class Assign02_04<T> implements Deque<T> {
     // Please give an list-based implementation of Deque
     // Note that the underlying list needs to be doubly-linked!
 
-    private Node<T> first;
-    private Node<T> last;
+    protected Node<T> first;
+    protected Node<T> last;
     private int n;
 
     public static class Node<T> {
-        private T value;
-        private Node<T> next;
-        private Node<T> prev;
+        protected T value;
+        protected Node<T> next;
+        protected Node<T> prev;
     }
 
     public Assign02_04(){
