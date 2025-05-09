@@ -3,37 +3,41 @@ import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 public class Assign03_03<T> extends Assign02_03<T> implements Iterable2<T> {
-    
+
     @Override
-    public Iterator<T> iterator() { // Forward iterator
+    public Iterator<T> iterator() {
         return new Iterator<T>() {
+            private int i = 0;
 
             @Override
             public boolean hasNext() {
-                return size() > 0;  // Assuming size() gives the number of elements
+                return i < size();
             }
 
             @Override
             public T next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                return takeout_at_beg();
+                if (!hasNext())
+                    throw new NoSuchElementException();
+                return get(i++); // get is NON DESTURCITVE
             }
         };
     }
 
     @Override
-    public Iterator<T> riterator() { // Backward iterator
+    public Iterator<T> riterator() {
         return new Iterator<T>() {
+            private int i = size() - 1;
 
             @Override
             public boolean hasNext() {
-                return size() > 0;  // Assuming size() gives the number of elements
+                return i >= 0;
             }
 
             @Override
             public T next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                return takeout_at_end();
+                if (!hasNext())
+                    throw new NoSuchElementException();
+                return get(i--); // get is NON DESTURCITVE
             }
         };
     }

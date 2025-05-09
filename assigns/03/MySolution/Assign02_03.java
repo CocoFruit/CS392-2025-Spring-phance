@@ -28,6 +28,14 @@ public class Assign02_03<T> implements Deque<T> {
     public int size(){
         return n;
     }
+    
+    public T get(int index) {
+        if (index < 0 || index >= n) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        return deque[(first + index) % deque.length];
+    }
+    
 
     private void resize(int capactiy){
         if (capactiy < 0) throw new IllegalArgumentException("Capacity must be non-negative.");
